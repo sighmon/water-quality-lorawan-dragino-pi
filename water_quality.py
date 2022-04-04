@@ -14,9 +14,7 @@ import logging
 from time import sleep
 
 import RPi.GPIO as GPIO
-from AtlasI2C import (
-    AtlasI2C
-)
+from atlas_i2c.atlas_i2c import AtlasI2C
 from dragino import Dragino
 
 
