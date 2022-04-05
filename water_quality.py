@@ -77,10 +77,11 @@ def main():
         print("\n" + device.get_device_info())
 
     # Create a Dragino object and join to TTN
+    print("\nStarting dragino connection to TTN")
     D = Dragino("dragino.toml", logging_level=logLevel)
     D.join()
 
-    print("Waiting for JOIN ACCEPT")
+    print("\nWaiting for JOIN ACCEPT")
     while not D.registered():
         print(".", end="")
         sleep(2)
