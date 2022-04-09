@@ -58,6 +58,31 @@ def get_ezo_devices():
     return device_list
 
 
+def read_data(device, num_of_bytes=31):
+    """Reads a specified number of bytes from I2C, then parses and
+    displays the result. Function is based on AtlasI2C.py read()
+    with compact output.
+
+    Returns a compact string of data from the device. e.g. pH:10.468
+    """
+    data = ""
+    raw_data = device.file_read.read(num_of_bytes)
+    response = device.get_response(raw_data=raw_data)
+    is_valid, error_code = device.response_valid(response=response)
+
+    if is_valid:
+        char_list = device.handle_raspi_glitch(response[1:])
+        data_string = str("".join(char_list))
+        # Remove \x00 padding from data
+        data_string = data_string.replace("\x00", "")
+        data = f"{device._module}:{data_string}"
+    else:
+        print(f"Error: {device._module} - {error_code}")
+        data = "0"
+
+    return data
+
+
 def get_data_from_all_ezo_devices(device_list):
     """Returns a list of string output from all EZO devices."""
     output = []
@@ -65,7 +90,7 @@ def get_data_from_all_ezo_devices(device_list):
         device.write("R")
         sleep(device.long_timeout)
     for device in device_list:
-        output.append(device.read())
+        output.append(read_data(device))
     return output
 
 
@@ -89,15 +114,15 @@ def main():
 
     while True:
         data = get_data_from_all_ezo_devices(ezo_device_list)
-        # Not sure what the data looks like,
-        # so let's concatenate it separated by "|"
-        joined_data = "|".join(data)
+        # Comma separated list of data
+        # e.g. 'DO:38.28,pH:10.468,RTD:-1023.000'
+        joined_data = ",".join(data)
         print("Sending data from devices: " + joined_data)
         D.send(joined_data)
 
         while D.transmitting:
             sleep(0.1)
-        sleep(99*D.lastAirTime())  # limit to 1% duty cycle
+        sleep(99.7*D.lastAirTime())  # limit to 0.3% duty cycle
 
 
 if __name__ == '__main__':
