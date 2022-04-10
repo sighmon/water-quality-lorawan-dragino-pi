@@ -11,8 +11,7 @@ Based on:
 
 ## Instructions
 
-After installing the libraries from the two repos above:
-
+* Initialise the submodules: `git submodule update --init`
 * Run `python3 water_quality.py`
 * Watch for output
 
