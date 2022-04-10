@@ -14,10 +14,10 @@ import logging
 from time import sleep
 
 import RPi.GPIO as GPIO
-from AtlasI2C import (
+from atlas.AtlasI2C import (
     AtlasI2C
 )
-from dragino import Dragino
+from dragino.dragino import Dragino
 
 
 GPIO.setwarnings(False)

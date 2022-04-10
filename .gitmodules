@@ -1,0 +1,6 @@
+[submodule "dragino"]
+	path = dragino
+	url = git@github.com:BNNorman/dragino-1.git
+[submodule "atlas"]
+	path = atlas
+	url = git@github.com:whitebox-labs/whitebox-raspberry-ezo.git
