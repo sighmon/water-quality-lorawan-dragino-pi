@@ -15,6 +15,10 @@ Based on:
 * Run `python3 water_quality.py`
 * Watch for output
 
+### Data format
+
+Data will be sent via TTN in the format: `DO:38.28,pH:10.468,RTD:-1023.000`
+
 ## Disclaimer
 
 I don't have any of the hardware, so your milage may vary.
