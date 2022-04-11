@@ -3,13 +3,14 @@
     Read Atlas Scientific water quality sensors
     and send their readings over LoRaWAN via a
     Dragino Raspberry Pi hat.
-    Adheres to a 1% duty cycle
+    Add --sleep argument to control time between transmission.
     cache.json will be created if it doesn't exist
 
     Based on:
     * https://github.com/whitebox-labs/whitebox-raspberry-ezo
     * https://github.com/BNNorman/dragino-1
 """
+import argparse
 import logging
 from time import sleep
 
@@ -20,6 +21,15 @@ from atlas.AtlasI2C import (
 from dragino.dragino import Dragino
 
 
+parser = argparse.ArgumentParser(description="Application settings.")
+parser.add_argument(
+    "-s",
+    "--sleep",
+    type=int,
+    default="900",
+    help="sleep time between TTN transmissions. (default: 900 seconds)",
+)
+args = parser.parse_args()
 GPIO.setwarnings(False)
 
 # add logfile
@@ -122,7 +132,8 @@ def main():
 
         while D.transmitting:
             sleep(0.1)
-        sleep(99.7*D.lastAirTime())  # limit to 0.3% duty cycle
+        print(f"\nSleeping for {args.sleep} seconds between TTN transmissions")
+        sleep(args.sleep)
 
 
 if __name__ == '__main__':
