@@ -12,6 +12,7 @@ Based on:
 ## Instructions
 
 * Initialise the submodules: `git submodule update --init`
+* Follow the [Dragino](https://github.com/BNNorman/dragino-1#installation-compute-nodes-version) installation instructions
 * Run `python3 water_quality.py`
 * Watch for output
 
