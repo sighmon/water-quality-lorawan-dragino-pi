@@ -127,7 +127,14 @@ def main():
         # Comma separated list of data
         # e.g. 'DO:38.28,pH:10.468,RTD:-1023.000'
         joined_data = ",".join(data)
-        print("Sending data from devices: " + joined_data)
+        print("\nSending data from devices: " + joined_data)
+
+        # Try to re-join to avoid an IndexError in getSendSettings
+        D.join()
+        while not D.registered():
+            print(".", end="")
+            sleep(2)
+
         D.send(joined_data)
 
         while D.transmitting:
