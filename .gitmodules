@@ -1,0 +1,6 @@
+[submodule "atlas"]
+	path = atlas
+	url = https://github.com/whitebox-labs/whitebox-raspberry-ezo.git
+[submodule "dragino"]
+	path = dragino
+	url = https://github.com/BNNorman/dragino-1.git

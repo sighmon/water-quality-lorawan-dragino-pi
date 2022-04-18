@@ -11,10 +11,14 @@ Based on:
 
 ## Instructions
 
-After installing the libraries from the two repos above:
-
+* Initialise the submodules: `git submodule update --init`
+* Follow the [Dragino](https://github.com/BNNorman/dragino-1#installation-compute-nodes-version) installation instructions
 * Run `python3 water_quality.py`
 * Watch for output
+
+### Data format
+
+Data will be sent via TTN in the format: `DO:38.28,pH:10.468,RTD:-1023.000`
 
 ## Disclaimer
 
