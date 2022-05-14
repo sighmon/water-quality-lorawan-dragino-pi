@@ -13,6 +13,8 @@ Based on:
 
 * Initialise the submodules: `git submodule update --init`
 * Follow the [Dragino](https://github.com/BNNorman/dragino-1#installation-compute-nodes-version) installation instructions
+* Follow the [Whitebox Raspbeery EZO](https://github.com/whitebox-labs/whitebox-raspberry-ezo#i2c-mode) installation instructions
+* Copy `dragino.toml` from the `Dragino` directory to the root of this repo
 * Run `python3 water_quality.py`
 * Watch for output
 
