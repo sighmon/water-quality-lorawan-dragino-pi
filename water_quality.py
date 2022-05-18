@@ -124,9 +124,9 @@ def main():
 
     while True:
         data = get_data_from_all_ezo_devices(ezo_device_list)
-        # Comma separated list of data
-        # e.g. 'DO:38.28,pH:10.468,RTD:-1023.000'
-        joined_data = ",".join(data)
+        # Pipe separated list of data
+        # e.g. 'DO:38.29,421.1|ORP:96.1|pH:14.000|EC:0.00,0,0.00,1.000|RTD:-1023.000'
+        joined_data = "|".join(data)
         print("Sending data from devices: " + joined_data)
         D.send(joined_data)
 

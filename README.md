@@ -20,7 +20,7 @@ Based on:
 
 ### Data format
 
-Data will be sent via TTN in the format: `DO:38.28,pH:10.468,RTD:-1023.000`
+Data will be sent via TTN in the format: `DO:38.29,421.1|ORP:96.1|pH:14.000|EC:0.00,0,0.00,1.000|RTD:-1023.000`
 
 ## Disclaimer
 
