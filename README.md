@@ -18,10 +18,12 @@ Based on:
 * Run `python3 water_quality.py`
 * Watch for output
 
-### Data format
+## Output data format
 
-Data will be sent via TTN in the format: `DO:38.29,421.1|ORP:96.1|pH:14.000|EC:0.00,0,0.00,1.000|RTD:-1023.000`
+Data will be sent as `|` separated strings, with the name of the sensor and the data separated by `:`.
 
-## Disclaimer
+e.g. `DO:38.29,421.1|ORP:96.1|pH:14.000|EC:0.00,0,0.00,1.000|RTD:-1023.000`
 
-I don't have any of the hardware, so your milage may vary.
+## Chripstack decoder
+
+To decode the messages received by [Chirpstack](https://www.chirpstack.io), use the decoder: [decode.js](decode.js)
